@@ -1,16 +1,16 @@
-# Starknet's Counter Workshop
+# Taller de Counter en Starknet
 
-In this workshop, you will learn how to create a simple Starknet smart contract, implement public functions, events, and access external contracts.
+En este taller, aprenderás a crear un smart contract simple en Starknet, implementar funciones públicas, eventos y acceder a contratos externos.
 
-After completing each step, run the associated script to verify it has been implemented correctly.
+Después de completar cada paso, ejecuta el script asociado para verificar que se haya implementado correctamente.
 
-Use the [Cairo book](https://book.cairo-lang.org/ch00-00-introduction.html) and the [Starknet docs](https://docs.starknet.io/documentation/) as a reference.
+Utiliza el [Cairo book](https://book.cairo-lang.org/ch00-00-introduction.html) y la [Documentación de Starknet](https://docs.starknet.io/documentation/) como referencia.
 
-## Setup
+## Configuración
 
-1. Clone this repository
-1. Create a new file called `counter.cairo` inside the `src` folder
-1. Copy the following code into the file
+1. Clona este repositorio.
+2. Crea un nuevo archivo llamado `counter.cairo` dentro de la carpeta `src`.
+3. Copia el siguiente código en el archivo.
 
 ```rust
 #[starknet::contract]
@@ -20,216 +20,261 @@ mod Counter {
 }
 ```
 
-> **Note:** You'll be working on the `counter.cairo` file to complete the requirements of each step. The file `prev_solution.cairo` will show up in future steps as a way to catch up with the workshop if you fall behind. **Don't modify that file**.
+> **Nota:** Trabajarás en el archivo `counter.cairo` para completar los requisitos de cada paso. El archivo `prev_solution.cairo` aparecerá en pasos futuros como una forma de ponerte al día con el taller si te quedas atrás. **No modifiques ese archivo**.
 
-The next setup steps will depend on wether you prefer using Docker to manage global dependencies or not.
+Los siguientes pasos de configuración dependerán de si prefieres usar Docker para gestionar dependencias globales o no.
 
-### Option 1: Without Docker
+### Opción 1: Sin Docker
 
-4. Install Scarb 2.5.1 ([instructions](https://docs.swmansion.com/scarb/download.html#install-via-asdf))
-1. Install Starknet Foundry 0.16.0 ([instructions](https://foundry-rs.github.io/starknet-foundry/getting-started/installation.html))
-1. Install the Cairo 1.0 extension for VSCode ([marketplace](https://marketplace.visualstudio.com/items?itemName=starkware.cairo1))
-1. Run the tests to verify the project is setup correctly
-
-```
-$ scarb test
-```
-
-### Option 2: With Docker
-
-4. Make sure Docker is installed and running
-5. Install the Dev Containers extension for VSCode ([marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers))
-6. Launch an instance of VSCode inside of the container by going to **View -> Command Palette -> Dev Containers: Rebuild and Reopen in Container**
-7. Open VSCode's integrated terminal and run the tests to verify the project is setup correctly
+4. Instala Scarb 2.5.3 ([instrucciones](https://docs.swmansion.com/scarb/download.html#install-via-asdf)).
+5. Instala Starknet Foundry 0.17.0 ([instrucciones](https://foundry-rs.github.io/starknet-foundry/getting-started/installation.html)).
+6. Instala la extensión Cairo 1.0 para VSCode ([marketplace](https://marketplace.visualstudio.com/items?itemName=starkware.cairo1)).
+7. Ejecuta los tests para verificar que el proyecto esté configurado correctamente.
 
 ```
-$ scarb test
+scarb test
 ```
 
-> **Note:** All the commands shown from this point on will assume that you are using the integrated terminal of a VSCode instance running inside the container. If you want to run the tests on a different terminal you'll need to use the command `docker compose run test`.
+### Opción 2: Con Docker
 
-## Step 1
+4. Asegúrate de que Docker esté instalado y en funcionamiento.
+5. Instala la extensión Dev Containers para VSCode ([marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)).
+6. Lanza una instancia de VSCode dentro del contenedor yendo a **Ver -> Paleta de comandos -> Dev Containers: Reconstruir y reabrir en contenedor**.
+7. Abre el terminal integrado de VSCode y ejecuta los tests para verificar que el proyecto esté configurado correctamente.
 
-Checkout the `step1` branch to enable the verification tests for this section.
+```
+scarb test
+```
+
+> **Nota:** Todos los comandos mostrados a partir de este punto asumirán que estás utilizando el terminal integrado de una instancia de VSCode ejecutándose dentro del contenedor. Si quieres ejecutar los tests en un terminal diferente, necesitarás usar el comando `docker compose run test`.
+
+## Paso 1
+
+Crea una rama `step1` para habilitar los tests de verificación para esta sección.
 
 ```bash
-$ git checkout -b step1 origin/step1
+git checkout -b step1 origin/step1
 ```
 
-### Goal
-
-In this step, you will need to do the following:
-
-1. Store a variable named `counter` as `u32` type in the `Storage` struct.
-2. Implement the constructor function that initializes the `counter` variable with a given input value.
-3. Implement a public function named `get_counter()` which returns the value of the `counter` variable.
-
-### Requirements
-
-- The `get_counter()` function must be within the contract's interface named `ICounter`.
-
-> **Note:** Any other given name to the contract's interface would break the test, be sure to have to correct name!
-
-### Verification
-
-When completed, execute the test suite to verify you've met all the requirements for this section.
-
-```
-$ scarb test
-```
-
-### Hints
-
-- Storage variables are the most common way to interact with your contract storage. You can read more about it in [Chapter 12.3.1 - Contract Storage](https://book.cairo-lang.org/ch99-01-03-01-contract-storage.html#contract-storage).
-- The constructor function is a special type of function that runs only once. You can read more about it in [Chapter 12.3.2 - Constructor Function](https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html#1-constructors).
-- To create a contract interface, you will need to define a trait with the name `ICounter` (otherwise the tests will fail) and mark the trait with the `[starknet::interface]` attribute. You can read more about it in [Chapter 12.5 Interfaces](https://book.cairo-lang.org/ch99-02-01-abis-and-interfaces.html#interface).
-- The `get_counter()` function should only be able to read the state of the contract and not modify it. You can read more about it in [Chapter 12.3.2 - View functions](https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html#view-functions).
-
-## Step 2
-
-Checkout the `step2` branch to enable the verification tests for this section.
+O Simplemente cambia de rama a `step1` si ya la tienes creada.
 
 ```bash
-$ git checkout -b step2 origin/step2
+git checkout step1
 ```
 
-If you fell behind, the file `prev_solution.cairo` contains the solution to the previous step.
+### Objetivo
 
-### Goal
+En este paso, necesitarás hacer lo siguiente:
 
-Implement a function called `increase_counter()` that can increment the current value of the `counter` by `1` each time it is invoked.
+1. Almacenar una variable llamada `counter` como tipo `u32` en la estructura `Storage`.
+2. Implementar la función del constructor que inicializa la variable `counter` con un valor de entrada dado.
+3. Implementar una función pública llamada `get_counter()` que devuelva el valor de la variable `counter`.
 
-### Verification
+### Requisitos
 
-When completed, execute the test suite to verify you've met all the requirements for this section.
+- La función `get_counter()` debe estar dentro de la interfaz del contrato llamada `ICounter`.
+
+> **Nota:** Cualquier otro nombre dado a la interfaz del contrato rompería el test, ¡asegúrate de tener el nombre correcto!
+
+### Verificación
+
+Cuando completes, ejecuta la suite de tests para verificar que has cumplido con todos los requisitos de esta sección.
 
 ```
-$ scarb test
+scarb test
 ```
 
-### Hints
+### Consejos
 
-- The `increase_counter()` function should be able to modify the state of the contract (also called an external function) and update the `counter` value within the `Storage`. You can read more about it in [Chapter 12.3.2 - External Functions](https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html#external-functions).
+- Las variables de Storage son la forma más común de interactuar con el almacenamiento de tu contrato. Puedes leer más sobre esto en el [Capítulo 12.3.1 - Storage de Contratos](https://book.cairo-lang.org/ch99-01-03-01-contract-storage.html#contract-storage).
+- La función del constructor es un tipo especial de función que se ejecuta solo una vez. Puedes leer más sobre esto en el [Capítulo 12.3.2 - Función de Constructor](https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html#1-constructors).
+- Para crear una interfaz de contrato, necesitarás definir un trait con el nombre `ICounter` (de lo contrario, los tests fallarán) y marcar el trait con el atributo `[starknet::interface]`. Puedes leer más sobre esto en el [Capítulo 12.5 Interfaces](https://book.cairo-lang.org/ch99-02-01-abis-and-interfaces.html#interface).
+- La función `get_counter()` solo debería poder leer el estado del contrato y no modificarlo. Puedes leer más sobre esto en el [Capítulo 12.3.2 - Funciones de Lectura](https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html#view-functions).
 
-## Step 3
+## Paso 2
 
-Checkout the `step3` branch to enable the verification tests for this section.
+Crea una rama `step2` para habilitar los tests de verificación para esta sección.
 
 ```bash
-$ git checkout -b step3 origin/step3
+git checkout -b step2 origin/step2
 ```
 
-If you fell behind, the file `prev_solution.cairo` contains the solution to the previous step.
+O Simplemente cambia de rama a `step2` si ya la tienes creada.
 
-### Goal
-
-In this step, you will need to do the following:
-
-1. Import the `KillSwitch` contract interface into your project.
-2. Store a variable named `kill_switch` as type `IKillSwitchDispatcher` in the `Storage`.
-3. Update the constructor function to receive an additional input variable with the type `ContractAddress`.
-4. Update the constructor function to initialize the `kill_switch` variable with the newly added input variable. Note that you need to use the `IKillSwitchDispatcher` which expects a `ContractAddress` as its type.
-
-> **Note:** Analyze the `KillSwitch` code to understand the interface and the contract structure from [here](https://github.com/starknet-edu/kill-switch/blob/master/src/lib.cairo). This is already added as a dependency in your `Scarb.toml` file.
-
-### Verification
-
-When completed, execute the test suite to verify you've met all the requirements for this section.
-
-```
-$ scarb test
+```bash
+git checkout step2
 ```
 
-### Hints
+Si te quedaste atrás, el archivo `prev_solution.cairo` contiene la solución al paso anterior.
 
-- You need to import `Dispatcher` and `DispatcherTrait` of the KillSwitch contract. These dispatchers are automatically created and exported by the compiler. More information about Contract Dispatcher can be found in [Chapter 12.5.2 - Contract Dispatcher](https://book.cairo-lang.org/ch99-02-02-contract-dispatcher-library-dispatcher-and-system-calls.html#contract-dispatcher).
-- In the constructor, you can update the variable `kill_switch` with the `IKillSwitchDispatcher { contract_address: ??? }`, which expects the address of the external contract.
+### Objetivo
 
-> **Note:** If you want to deploy the `Counter` contract, you can use the following deployed `KillSwitch` contract address.
+Implementa una función llamada `increase_counter()` que pueda incrementar el valor actual del `counter` en `1` cada vez que se invoque.
+
+### Verificación
+
+Cuando completes, ejecuta la suite de tests para verificar que has cumplido con todos los requisitos de esta sección.
+
+```
+scarb test
+```
+
+### Consejos
+
+- La función `increase_counter()` debe ser capaz de modificar el estado del contrato (también llamada una función externa) y actualizar el valor de `counter` dentro de `Storage`. Puedes leer más sobre esto en el [Capítulo 12.3.2 - Funciones Externas](https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html#external-functions).
+
+## Paso 3
+
+Crea una rama `step3` para habilitar los tests de verificación para esta sección.
+
+```bash
+git checkout -b step3 origin/step3
+```
+
+O Simplemente cambia de rama a `step3` si ya la tienes creada.
+
+```bash
+git checkout step3
+```
+
+Si te quedaste atrás, el archivo `prev_solution.cairo` contiene la solución al paso anterior.
+
+### Objetivo
+
+En este paso, necesitarás hacer lo siguiente:
+
+1. Importar la interfaz del contrato `KillSwitch` a tu proyecto.
+2. Almacenar una variable llamada `kill_switch` como tipo `IKillSwitchDispatcher` en `Storage`.
+3. Actualizar la función del constructor para recibir una variable de entrada adicional con el tipo `ContractAddress`.
+4. Actualizar la función del constructor para inicializar la variable `kill_switch` con la nueva variable de entrada añadida. Ten en cuenta que necesitas usar `IKillSwitchDispatcher` que espera un `ContractAddress` como su tipo.
+
+> **Nota:** Analiza el código de `KillSwitch` para entender la interfaz y la estructura del contrato desde [aquí](https://github.com/starknet-edu/kill-switch/blob/master/src/lib.cairo). Esto ya está añadido como una dependencia en tu archivo `Scarb.toml`.
+
+### Verificación
+
+Cuando completes, ejecuta la suite de tests para verificar que has cumplido con todos los requisitos de esta sección.
+
+```
+scarb test
+```
+
+### Consejos
+
+- Necesitas importar `Dispatcher` y `DispatcherTrait` del contrato KillSwitch. Estos despachadores son creados y exportados automáticamente por el compilador. Puedes encontrar más información sobre el Despachador de Contratos en el [Capítulo 12.5.2 - Despachador de Contratos](https://book.cairo-lang.org/ch99-02-02-contract-dispatcher-library-dispatcher-and-system-calls.html#contract-dispatcher).
+- En el constructor, puedes actualizar la variable `kill_switch` con `IKillSwitchDispatcher { contract_address: ??? }`, que espera la dirección del contrato externo.
+
+> **Nota:** Si deseas desplegar el contrato `Counter`, puedes usar la siguiente dirección del contrato `KillSwitch` desplegado.
 >
 > **Goerli**
 >
-> Contract Address: `0x033b2c899fd8f89e3e1d5b69c4d495f1018a1dbb8c19b18795c2e16b078da34d`
+> Dirección del Contrato: `0x033b2c899fd8f89e3e1d5b69c4d495f1018a1dbb8c19b18795c2e16b078da34d`
 >
 > - [Voyager](https://goerli.voyager.online/contract/0x033b2c899fd8f89e3e1d5b69c4d495f1018a1dbb8c19b18795c2e16b078da34d)
 > - [Starkscan](https://testnet.starkscan.co/contract/0x033b2c899fd8f89e3e1d5b69c4d495f1018a1dbb8c19b18795c2e16b078da34d)
+>
+>**Sepolia**
+>
+> Dirección del Contrato: `0x048fd89591a02ee84a9080bf014889892c5600d2253b3d2da17fb37629b64f2f`
+>
+> - [Voyager](https://sepolia.voyager.online/contract/0x048fd89591a02ee84a9080bf014889892c5600d2253b3d2da17fb37629b64f2f)
+> - [Starkscan](https://sepolia.starkscan.co/contract/0x048fd89591a02ee84a9080bf014889892c5600d2253b3d2da17fb37629b64f2f)
+>
 
-## Step 4
+## Paso 4
 
-Checkout the `step4` branch to enable the verification tests for this section.
-
-```bash
-$ git checkout -b step4 origin/step4
-```
-
-If you fell behind, the file `prev_solution.cairo` contains the solution to the previous step.
-
-### Goal
-
-Implement the `KillSwitch` mechanism in the `increase_counter()` by calling the `is_active()` function from the `KillSwitch` contract.
-
-### Requirements
-
-- If the function `is_active()` from the KillSwitch contract returns `true`, then allow the `increase_counter()` to increment the value.
-- If the function `is_active()` from the KillSwitch contract returns `false`, then return without incrementing the value.
-
-### Verification
-
-When completed, execute the test suite to verify you've met all the requirements for this section.
-
-```
-$ scarb test
-```
-
-### Hints
-
-- You can access the `is_active()` function from your `kill_switch` variable. Use this to create the logic in the `increase_counter()` function.
-
-## Step 5
-
-Checkout the `step5` branch to enable the verification tests for this section.
+Crea una rama `step4` para habilitar los tests de verificación para esta sección.
 
 ```bash
-$ git checkout -b step5 origin/step5
+git checkout -b step4 origin/step4
 ```
 
-If you fell behind, the file `prev_solution.cairo` contains the solution to the previous step.
-
-### Goal
-
-In this step, you will need to do the following:
-
-1. Implement an event named `CounterIncreased` which emits the current value of the `counter`.
-2. Emit this event when the `counter` variable has been successfully incremented.
-
-### Verification
-
-When completed, execute the test suite to verify you've met all the requirements for this section.
-
-```
-$ scarb test
-```
-
-### Hints
-
-- Events are custom data structures that are emitted by a contract. More information about Events can be found in [Chapter 12.3.3 - Contract Events](https://book.cairo-lang.org/ch99-01-03-03-contract-events.html).
-
-## Step 6 (Final)
-
-Checkout the `step6` branch to enable the verification tests for this section.
+O Simplemente cambia de rama a `step4` si ya la tienes creada.
 
 ```bash
-$ git checkout -b step6 origin/step6
+git checkout step4
 ```
 
-If you fell behind, the file `prev_solution.cairo` contains the solution to the previous step.
+Si te quedaste atrás, el archivo `prev_solution.cairo` contiene la solución al paso anterior.
 
-### Goal
+### Objetivo
 
-Check that you have correctly created an account contract for Starknet by running the full test suite:
+Implementa el mecanismo `KillSwitch` en la función `increase_counter()` llamando a la función `is_active()` del contrato `KillSwitch`.
+
+### Requisitos
+
+- Si la función `is_active()` del contrato KillSwitch devuelve `true`, entonces permite que `increase_counter()` incremente el valor.
+- Si la función `is_active()` del contrato KillSwitch devuelve `false`, entonces devuelve sin incrementar el valor.
+
+### Verificación
+
+Cuando completes, ejecuta la suite de tests para verificar que has cumplido con todos los requisitos de esta sección.
+
+```
+scarb test
+```
+
+### Consejos
+
+- Puedes acceder a la función `is_active()` desde tu variable `kill_switch`. Usa esto para crear la lógica en la función `increase_counter()`.
+
+## Paso 5
+
+Crea una rama `step5` para habilitar los tests de verificación para esta sección.
 
 ```bash
-$ scarb test
+git checkout -b step5 origin/step5
 ```
 
-If the test suite passes, congratulations, you have created your first Counter Smart Contract on Starknet.
+O Simplemente cambia de rama a `step5` si ya la tienes creada.
+
+```bash
+git checkout step5
+```
+
+Si te quedaste atrás, el archivo `prev_solution.cairo` contiene la solución al paso anterior.
+
+### Objetivo
+
+En este paso, necesitarás hacer lo siguiente:
+
+1. Implementar un evento llamado `CounterIncreased` que emita el valor actual del `counter`.
+2. Emitir este evento cuando la variable `counter` haya sido incrementada exitosamente.
+
+### Verificación
+
+Cuando completes, ejecuta la suite de tests para verificar que has cumplido con todos los requisitos de esta sección.
+
+```
+scarb test
+```
+
+### Consejos
+
+- Los eventos son estructuras de datos personalizadas que son emitidas por un contrato. Puedes encontrar más información sobre Eventos en el [Capítulo 12.3.3 - Eventos de Contratos](https://book.cairo-lang.org/ch99-01-03-03-contract-events.html).
+
+## Paso 6 (Final)
+
+Crea una rama `step6` para habilitar los tests de verificación para esta sección.
+
+```bash
+git checkout -b step6 origin/step6
+```
+
+O Simplemente cambia de rama a `step6` si ya la tienes creada.
+
+```bash
+git checkout step6
+```
+
+Si te quedaste atrás, el archivo `prev_solution.cairo` contiene la solución al paso anterior.
+
+### Objetivo
+
+Verifica que hayas creado correctamente un contrato de cuenta para Starknet ejecutando la suite completa de tests:
+
+```bash
+scarb test
+```
+
+Si la suite de tests pasa, felicidades, has creado tu primer Contrato Inteligente de Contador en Starknet.
+
