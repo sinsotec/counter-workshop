@@ -250,7 +250,7 @@ scarb test
 
 ### Consejos
 
-- Los eventos son estructuras de datos personalizadas que son emitidas por un contrato. Puedes encontrar más información sobre Eventos en el [Capítulo 12.3.3 - Eventos de Contratos](https://book.cairo-lang.org/ch14-03-contract-events.htmlcontract-events).
+- Los eventos son estructuras de datos personalizadas que son emitidas por un contrato. Puedes encontrar más información sobre Eventos en el [Capítulo 12.3.3 - Eventos de Contratos](https://book.cairo-lang.org/ch14-03-contract-events.html#contract-events).
 
 ## Paso 6 (Final)
 
