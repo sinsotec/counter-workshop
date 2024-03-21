@@ -86,10 +86,10 @@ scarb test
 
 ### Consejos
 
-- Las variables de Storage son la forma más común de interactuar con el almacenamiento de tu contrato. Puedes leer más sobre esto en el [Capítulo 12.3.1 - Storage de Contratos](https://book.cairo-lang.org/ch99-01-03-01-contract-storage.html#contract-storage).
-- La función del constructor es un tipo especial de función que se ejecuta solo una vez. Puedes leer más sobre esto en el [Capítulo 12.3.2 - Función de Constructor](https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html#1-constructors).
-- Para crear una interfaz de contrato, necesitarás definir un trait con el nombre `ICounter` (de lo contrario, los tests fallarán) y marcar el trait con el atributo `[starknet::interface]`. Puedes leer más sobre esto en el [Capítulo 12.5 Interfaces](https://book.cairo-lang.org/ch99-02-01-abis-and-interfaces.html#interface).
-- La función `get_counter()` solo debería poder leer el estado del contrato y no modificarlo. Puedes leer más sobre esto en el [Capítulo 12.3.2 - Funciones de Lectura](https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html#view-functions).
+- Las variables de Storage son la forma más común de interactuar con el almacenamiento de tu contrato. Puedes leer más sobre esto en el [Capítulo 12.3.1 - Storage de Contratos](https://book.cairo-lang.org/ch14-01-contract-storage.html#contract-storage).
+- La función del constructor es un tipo especial de función que se ejecuta solo una vez. Puedes leer más sobre esto en el [Capítulo 12.3.2 - Función de Constructor](https://book.cairo-lang.org/ch14-02-contract-functions.html#1-constructors).
+- Para crear una interfaz de contrato, necesitarás definir un trait con el nombre `ICounter` (de lo contrario, los tests fallarán) y marcar el trait con el atributo `[starknet::interface]`. Puedes leer más sobre esto en el [Capítulo 12.5 Interfaces](https://book.cairo-lang.org/ch15-01-abis-and-contract-interfaces.html#interface).
+- La función `get_counter()` solo debería poder leer el estado del contrato y no modificarlo. Puedes leer más sobre esto en el [Capítulo 12.3.2 - Funciones de Lectura](https://book.cairo-lang.org/ch14-02-contract-functions.html#view-functions).
 
 ## Paso 2
 
@@ -121,7 +121,7 @@ scarb test
 
 ### Consejos
 
-- La función `increase_counter()` debe ser capaz de modificar el estado del contrato (también llamada una función externa) y actualizar el valor de `counter` dentro de `Storage`. Puedes leer más sobre esto en el [Capítulo 12.3.2 - Funciones Externas](https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html#external-functions).
+- La función `increase_counter()` debe ser capaz de modificar el estado del contrato (también llamada una función externa) y actualizar el valor de `counter` dentro de `Storage`. Puedes leer más sobre esto en el [Capítulo 12.3.2 - Funciones Externas](https://book.cairo-lang.org/ch14-02-contract-functions.html#external-functions).
 
 ## Paso 3
 
@@ -160,7 +160,7 @@ scarb test
 
 ### Consejos
 
-- Necesitas importar `Dispatcher` y `DispatcherTrait` del contrato KillSwitch. Estos despachadores son creados y exportados automáticamente por el compilador. Puedes encontrar más información sobre el Despachador de Contratos en el [Capítulo 12.5.2 - Despachador de Contratos](https://book.cairo-lang.org/ch99-02-02-contract-dispatcher-library-dispatcher-and-system-calls.html#contract-dispatcher).
+- Necesitas importar `Dispatcher` y `DispatcherTrait` del contrato KillSwitch. Estos despachadores son creados y exportados automáticamente por el compilador. Puedes encontrar más información sobre el Despachador de Contratos en el [Capítulo 12.5.2 - Despachador de Contratos](https://book.cairo-lang.org/ch15-02-contract-dispatchers-library-dispatchers-and-system-calls.html#contract-dispatcher).
 - En el constructor, puedes actualizar la variable `kill_switch` con `IKillSwitchDispatcher { contract_address: ??? }`, que espera la dirección del contrato externo.
 
 > **Nota:** Si deseas desplegar el contrato `Counter`, puedes usar la siguiente dirección del contrato `KillSwitch` desplegado.
@@ -250,7 +250,7 @@ scarb test
 
 ### Consejos
 
-- Los eventos son estructuras de datos personalizadas que son emitidas por un contrato. Puedes encontrar más información sobre Eventos en el [Capítulo 12.3.3 - Eventos de Contratos](https://book.cairo-lang.org/ch99-01-03-03-contract-events.html).
+- Los eventos son estructuras de datos personalizadas que son emitidas por un contrato. Puedes encontrar más información sobre Eventos en el [Capítulo 12.3.3 - Eventos de Contratos](https://book.cairo-lang.org/ch14-03-contract-events.htmlcontract-events).
 
 ## Paso 6 (Final)
 
