@@ -26,8 +26,8 @@ Los siguientes pasos de configuración dependerán de si prefieres usar Docker p
 
 ### Opción 1: Sin Docker
 
-4. Instala Scarb 2.5.3 ([instrucciones](https://docs.swmansion.com/scarb/download.html#install-via-asdf)).
-5. Instala Starknet Foundry 0.17.0 ([instrucciones](https://foundry-rs.github.io/starknet-foundry/getting-started/installation.html)).
+4. Instala Scarb 2.6.3 ([instrucciones](https://docs.swmansion.com/scarb/download.html#install-via-asdf)).
+5. Instala Starknet Foundry 0.20.0 ([instrucciones](https://foundry-rs.github.io/starknet-foundry/getting-started/installation.html)).
 6. Instala la extensión Cairo 1.0 para VSCode ([marketplace](https://marketplace.visualstudio.com/items?itemName=starkware.cairo1)).
 7. Ejecuta los tests para verificar que el proyecto esté configurado correctamente.
 
