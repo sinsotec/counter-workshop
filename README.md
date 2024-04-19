@@ -10,7 +10,8 @@ Utiliza el [Cairo book](https://book.cairo-lang.org/ch00-00-introduction.html) y
 
 1. Clona este repositorio.
 2. Crea un nuevo archivo llamado `counter.cairo` dentro de la carpeta `src`.
-3. Copia el siguiente código en el archivo.
+3. Remueve del .gitignore la linea que excluye src/counter.cairo.
+4. Copia el siguiente código en el archivo.
 
 ```rust
 #[starknet::contract]
@@ -26,10 +27,10 @@ Los siguientes pasos de configuración dependerán de si prefieres usar Docker p
 
 ### Opción 1: Sin Docker
 
-4. Instala Scarb 2.6.3 ([instrucciones](https://docs.swmansion.com/scarb/download.html#install-via-asdf)).
-5. Instala Starknet Foundry 0.20.0 ([instrucciones](https://foundry-rs.github.io/starknet-foundry/getting-started/installation.html)).
-6. Instala la extensión Cairo 1.0 para VSCode ([marketplace](https://marketplace.visualstudio.com/items?itemName=starkware.cairo1)).
-7. Ejecuta los tests para verificar que el proyecto esté configurado correctamente.
+5. Instala Scarb 2.6.3 ([instrucciones](https://docs.swmansion.com/scarb/download.html#install-via-asdf)).
+6. Instala Starknet Foundry 0.20.0 ([instrucciones](https://foundry-rs.github.io/starknet-foundry/getting-started/installation.html)).
+7. Instala la extensión Cairo 1.0 para VSCode ([marketplace](https://marketplace.visualstudio.com/items?itemName=starkware.cairo1)).
+8. Ejecuta los tests para verificar que el proyecto esté configurado correctamente.
 
 ```
 scarb test
@@ -37,10 +38,10 @@ scarb test
 
 ### Opción 2: Con Docker
 
-4. Asegúrate de que Docker esté instalado y en funcionamiento.
-5. Instala la extensión Dev Containers para VSCode ([marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)).
-6. Lanza una instancia de VSCode dentro del contenedor yendo a **Ver -> Paleta de comandos -> Dev Containers: Reconstruir y reabrir en contenedor**.
-7. Abre el terminal integrado de VSCode y ejecuta los tests para verificar que el proyecto esté configurado correctamente.
+5. Asegúrate de que Docker esté instalado y en funcionamiento.
+6. Instala la extensión Dev Containers para VSCode ([marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)).
+7. Lanza una instancia de VSCode dentro del contenedor yendo a **Ver -> Paleta de comandos -> Dev Containers: Reconstruir y reabrir en contenedor**.
+8. Abre el terminal integrado de VSCode y ejecuta los tests para verificar que el proyecto esté configurado correctamente.
 
 ```
 scarb test
