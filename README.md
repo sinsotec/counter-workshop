@@ -10,7 +10,8 @@ Utiliza el [Cairo book](https://book.cairo-lang.org/ch00-00-introduction.html) y
 
 1. Clona este repositorio.
 2. Crea un nuevo archivo llamado `counter.cairo` dentro de la carpeta `src`.
-3. Copia el siguiente código en el archivo.
+3. Remueve del .gitignore la linea que excluye src/counter.cairo.
+4. Copia el siguiente código en el archivo.
 
 ```rust
 #[starknet::contract]
